@@ -23,5 +23,6 @@ public class DropdownUi extends CommonFlows {
     public By radioButtons(){
         return By.cssSelector("input[type='radio']");
     }
-
+    public By disabledCabbage() {return By.cssSelector("input[value='cabbage']");}
+    public By radioOrange() {return By.cssSelector("input[value='orange']");}
 }

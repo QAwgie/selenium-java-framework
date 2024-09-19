@@ -3,6 +3,7 @@ package custom_framework.apps.webdriveruniversity.test_cases;
 import custom_framework.apps.webdriveruniversity.page_flows.DropdownFlow;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -82,6 +83,22 @@ public class DropdownTest extends DropdownFlow {
             }
         }
         System.out.println("Total amount of selected items: " + selectedCount);
+    }
+
+    @Test
+    public void testCabbageIsDisabled(){
+        navDropdown();
+        WebElement cabbageDjuro = driver().findElement(disabledCabbage());
+        Assert.assertFalse(cabbageDjuro.isEnabled(), "Djuro bi trebalo da je disable-ovan, ali je enablovan");
+    }
+
+    @Test
+    public void testSelectedOrange(){
+        navDropdown();
+        WebElement orangeDjuro = driver().findElement(radioOrange());
+        orangeDjuro.click();
+        sleepTime(1500);
+        Assert.assertTrue(orangeDjuro.isSelected(), "Djuro bi trebalo da je selectovan, ali je nije");
     }
     private void addOptionToList(List<WebElement> options, List<String> allOptionsList){
         for (WebElement option : options) {
